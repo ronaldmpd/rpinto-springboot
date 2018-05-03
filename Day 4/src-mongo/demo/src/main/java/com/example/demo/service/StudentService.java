@@ -37,6 +37,12 @@ public class StudentService {
         //listStudent.add( newStudent);
     }
 
+    public void updateNewStudent(Student newStudent){
+        // insert new Student into DB
+        studentRepository.save(newStudent);
+        //listStudent.add( newStudent);
+    }
+
 
 
     public void deleteStudent(String id){

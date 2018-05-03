@@ -33,6 +33,13 @@ public class StudentController {
         System.out.println("the Name of new Student is "+newStudent.getName());
         studentService.addNewStudent(newStudent);
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public void updateStudent(@RequestBody Student newStudent){
+        System.out.println("the Name of update Student is "+newStudent.getName());
+        studentService.updateNewStudent(newStudent);
+    }
+
     // delete Student : localhost:9090/teacher/2
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public void deleteStudent(@PathVariable String id){
