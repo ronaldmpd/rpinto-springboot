@@ -34,7 +34,7 @@ public class StudentController {
         studentService.addNewStudent(newStudent);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.PUT)
     public void updateStudent(@RequestBody Student newStudent){
         System.out.println("the Name of update Student is "+newStudent.getName());
         studentService.updateNewStudent(newStudent);
