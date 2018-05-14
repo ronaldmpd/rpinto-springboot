@@ -23,7 +23,7 @@ public class SubscriptionController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Subscription> getAllSubscriptions(){
-        return subscriptionService.getAllTeachers();
+        return subscriptionService.getAllSubscriptions();
     }
 
 
@@ -35,6 +35,7 @@ public class SubscriptionController {
     public static class SubscriptionRequestDTO{
         private Date subDate;
         private Long teacherId;
+        private Long studentId;
 
         public Date getSubDate() {
             return subDate;
@@ -50,6 +51,14 @@ public class SubscriptionController {
 
         public void setTeacherId(Long teacherId) {
             this.teacherId = teacherId;
+        }
+
+        public Long getStudentId() {
+            return studentId;
+        }
+
+        public void setStudentId(Long studentId) {
+            this.studentId = studentId;
         }
     }
 }

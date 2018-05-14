@@ -1,8 +1,10 @@
 package com.example.demojpa.service;
 
 
+import com.example.demojpa.domain.Student;
 import com.example.demojpa.domain.Subscription;
 import com.example.demojpa.domain.Teacher;
+import com.example.demojpa.repository.StudentRepository;
 import com.example.demojpa.repository.SubscriptionRepository;
 import com.example.demojpa.repository.TeacherRepository;
 import com.example.demojpa.web.SubscriptionController;
@@ -21,7 +23,10 @@ public class SubscriptionService {
     @Autowired
     private TeacherRepository teacherRepository;
 
-    public List<Subscription> getAllTeachers(){
+    @Autowired
+    private StudentRepository studentRepository;
+
+    public List<Subscription> getAllSubscriptions(){
         //TODO use repository
         List<Subscription> list = new ArrayList<>();
         subscriptionRepository.findAll().forEach(e -> list.add(e));
@@ -33,7 +38,9 @@ public class SubscriptionService {
         Subscription newSubscription = new Subscription();
         newSubscription.setSubDate(new Date());
         Teacher teacher = teacherRepository.findById(newSubscriptionDTO.getTeacherId()).get();
+        Student student = studentRepository.findById(newSubscriptionDTO.getStudentId()).get();
         newSubscription.setTeacher(teacher);
+        newSubscription.setStudent(student);
         subscriptionRepository.save(newSubscription);
         System.out.println("the Name of teacher is --->" + newSubscription.getSubDate());
     }
